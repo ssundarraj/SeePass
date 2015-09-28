@@ -1,4 +1,6 @@
 function dblclickHandler(a){
+    console.log(this.top);
+    console.log(this.top);
     if(a.type=="password")
         a.setAttribute("type", "text");
     else if(a.type=="text")
@@ -14,5 +16,8 @@ for (var i = 0; i < inputs.length; i++) {
         inputs[i].addEventListener("dblclick", function(){
             dblclickHandler(this);
         });
+        // inputs[i].addEventListener("blur", function(){
+        //     dblclickHandler(this);
+        // });
     }
 };
