@@ -1,8 +1,11 @@
-function dblclickHandler(a){
-    this.innerHTML = "TEST";
+function mousedownHandler(a){
+    console.log("mouse down handler")
     if(a.type=="password")
         a.setAttribute("type", "text");
-    else if(a.type=="text")
+}
+function mouseupHandler(a){
+    console.log("mouse up handler")
+    if(a.type=="text")
         a.setAttribute("type", "password");
 }
 
@@ -16,10 +19,8 @@ function getStyle(el, styleProp)    {
 }
 
 var inputs = document.getElementsByTagName('input');
-// var passwordInputs = [];
 for (var i = 0; i < inputs.length; i++) {
     if(inputs[i].type=="password"){
-        // passwordInputs.push(inputs[i]);
 
         // Creating new img node for eye image
         var eyeImg = document.createElement("img");
@@ -42,6 +43,7 @@ for (var i = 0; i < inputs.length; i++) {
         // Specific styling
         // eyeImg.style.float = "left";
         eyeImg.style.position = "absolute";
+        // eyeImg.style.verticalAlign = "middle";
         // eyeImg.style.right = "-10px";
         eyeImg.style.borderLeft = "none";
         inputs[i].style.borderRight = "none";
@@ -49,8 +51,12 @@ for (var i = 0; i < inputs.length; i++) {
 
 
         inputs[i].parentNode.insertBefore(eyeImg, inputs[i].nextSibling);
-        inputs[i].addEventListener("dblclick", function(){
-            dblclickHandler(this);
+
+        eyeImg.addEventListener("mousedown", function(){
+            mousedownHandler(this.previousSibling);
+        });
+        eyeImg.addEventListener("mouseup", function(){
+            mouseupHandler(this.previousSibling);
         });
     }
 };
