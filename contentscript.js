@@ -28,12 +28,15 @@ for (var i = 0; i < inputs.length; i++) {
 
 
         // copying style attributes from input to eye
-        eyeImg.style.backgroundColor = getComputedStyle(inputs[i]).backgroundColor;
+        eyeImg.style.backgroundColor = getComputedStyle(inputs[i]).backgroundColor || "white";
         eyeImg.style.height = getComputedStyle(inputs[i]).height;
         eyeImg.style.borderTop = getComputedStyle(inputs[i]).borderTop;
         eyeImg.style.borderBottom = getComputedStyle(inputs[i]).borderBottom;
         eyeImg.style.borderRight = getComputedStyle(inputs[i]).borderRight;
         eyeImg.style.padding = getComputedStyle(inputs[i]).padding;
+        eyeImg.style.borderRadius = getComputedStyle(inputs[i]).borderRadius;
+        eyeImg.style.borderTopLeftRadius = 0;
+        eyeImg.style.borderBottomLeftRadius = 0;
 
         console.log(getComputedStyle(inputs[i]).width)
         console.log(getComputedStyle(eyeImg).width)
